@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src=" https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+        <script src="./Rotation.js"></script>
+        <script src="./Coin.js"></script>
+        <script src="./Fish.js"></script>
+        <script src="./Game.js"></script>
+    </head>
+    <body> 
+        <a-scene background="color:#026F90">
+            <a-entity id="look" look-controls camera position="0 2 20"></a-entity>
+
+            <a-assets timeout="10000">
+                <a-asset-time id="island" src="./volcano_island_lowpoly/scene.gltf"></a-asset-time>
+                <a-asset-time id="dive" src="./5-_dive_suit/scene.gltf"></a-asset-time>
+            </a-assets>
+
+            <a-entity animation="property: position; to: 0 1000 0; easing: linear; loop: true; dur: 150000">
+                <a-sphear position="5 2 15" radius="0.1" color="#ffffff" opacity="0.1"></a-sphear>
+            </a-entity>
+            <a-entity id="land" gltf-model="#island" position="0 -20 0" scale="0.003 0.003 0.003" fishes coins></a-entity>
+            <a-entity id="diver" gltf-model="#dive" position="0 0 15" scale="1 1" diver-rotation-reader dynamic-body game-play></a-entity>
+            <a-entity position="-23.5 19.3 0">
+                <a-entity position="" text="font: aileronsemibold; width: 14; color: black; value: TIME\nREMAINING"></a-entity> 
+                <a-entity id="timer" position="-9.8 0.3 0" text="font: exo2bold; align: center; width: 30; color: black; value: 00:00"></a-entity>
+            </a-entity>
+            <a-entity position="-18 19.3 0">
+                <a-entity position="-0.6 0.13 0" text="font: exo2bold; align: center; width: 30; color: black; value: Target\nRemaining"></a-entity>
+                <a-entity id="coins" position="-8 0.3 0" text="font: exo2bold; align: center; width: 30; color: black; value: 20"></a-entity>
+            </a-entity>
+            <a-entity position="30.5 21.5 0">
+                <a-entity position="0 0 0" text="font: exo2bold; align: center; width: 30; color: black; value: Score"></a-entity>
+                <a-entity id="score" position="0 -2 0" text="font: exo2bold; align: center; width: 30; color: black; value: 0">
+              </a-entity>
+            <a-entity id="end" position="0 7.5 0" text="font: exo2bold; align: center; width: 30; color: black; value: GAME\nOVER"></a-entity>
+        </a-scene>
+    </body>
+</html>
